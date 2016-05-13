@@ -17,3 +17,23 @@
     $(".wrap").each(function(){
         new IScroll('#'+$(this).attr("id"), {  });
     });
+    /*登录注册切换*/
+    function L2R(page){
+        $(".nav_module .line").css({
+                    "transition-timing-function": "cubic-bezier(0.1, 0.57, 0.1, 1)",
+                    "transition-duration": "1000ms",
+                    "transform":"translate("+page*100+"%, 0px) translateZ(0px)"
+        });
+        $("#login_page #pageRoll").css({
+                    "transition-timing-function": "cubic-bezier(0.1, 0.57, 0.1, 1)",
+                    "transition-duration": "1000ms",
+                    "transform":"translate(-"+page*750+"px, 0px) translateZ(0px)"
+        });
+    }
+    /*点击登录(导航)*/
+$("#login_page .nav_module #loginNav").unbind("tap").bind("tap",function(){
+    L2R(0);
+})
+$("#login_page .nav_module #registNav").unbind("tap").bind("tap",function(){
+    L2R(1);
+})

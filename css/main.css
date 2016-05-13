@@ -222,11 +222,13 @@ body {
   width: 200%;
   position: absolute;
   top:0px;
-  left: -750px;
+  left: 0px;
+  height: 100%;
 }
 #login_page .page{
   width: 750px;
   position: relative;
+  height: 100%;
   float: left;
 }
 #login_page #loginPhone,#login_page #registPhone,#regist2_page #name,#forgetKey_page #forgetPhone,#newPhone_page #newPhonePhone,#newPhone2_page #name,#history_page #Button{
