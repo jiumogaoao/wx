@@ -1,0 +1,280 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+  border: 0px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border-radius: 0px;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none; }
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+color: #8ea7c8; 
+font-family:"Microsoft YaHei";
+font-size:25px;
+} 
+input:-moz-placeholder, textarea:-moz-placeholder { 
+color: #8ea7c8; 
+font-family:"Microsoft YaHei";
+font-size:25px;
+} 
+input::-moz-placeholder, textarea::-moz-placeholder { 
+color: #8ea7c8; 
+font-family:"Microsoft YaHei";
+font-size:25px;
+} 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+color: #8ea7c8; 
+font-family:"Microsoft YaHei";
+font-size:25px;
+} 
+img{
+	display:block;}
+html {
+  width: 750px;
+  height: 100%;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  font-family:"Microsoft YaHei"}
+.clear{
+  clear: both;
+}
+body {
+  width: 750px;
+  height:100%;
+  position: relative; 
+  background-color: #fff;
+}
+#all{
+	 width: 750px;
+  height:100%;
+  position: relative; 
+  overflow:hidden;
+	}
+#main{
+	 width: 750px;
+  position: absolute; 
+  top:0px;
+  left: 0px;
+  bottom: 0px;
+  overflow:hidden;
+	}
+.wrap{
+  position:relative;
+  height: 100%;
+}
+.wrap #scroll{
+  width: 100%;
+  position: absolute;
+  top:0px;
+  left: 0px;
+}
+/*控件*/
+.topFrame_module{
+  width: 750px;
+  height: 485px;
+  position: relative;
+  background-image: url(../images/bg.jpg);
+}
+.topFrame_module .title{
+  font-size: 36px; 
+  color: #fff;
+  text-align: center;
+  padding-top: 47px;
+}
+.topFrame_module .logo{
+  position: absolute;
+  top:178px;
+  left: 284px;
+}
+.nav_module{
+  width: 440px;
+  margin: auto;
+  position: relative;
+  height: 105px;
+}
+.nav_module .point{
+  width: 50%;
+  float: left;
+  text-align: center;
+  color: #fff;
+  font-size:36px; 
+  margin-top: 47px;
+}
+.nav_module .line{
+  width: 50%;
+  background-color: #fff;
+  height: 8px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+.input_module{
+  width: 622px;
+  height: 98px;
+  border:1px solid #8ea7c8;
+  background-color: #eef5fd;
+  border-radius: 98px;
+  position: relative;
+}
+.input_module input{
+  width: 390px;
+  height: 98px;
+  line-height: 36px;
+  color: #8ea7c8;
+  font-size: 30px;
+  display: block;
+  margin:auto; 
+}
+.input_module .icon{
+  position: absolute;
+  top:0px;
+  left: 57px;
+  font-size: 34px;
+  line-height: 98px;
+  color: #8ea7c8;
+}
+.input_module .rightIcon{
+  position: absolute;
+  top:0px;
+  right: 28px;
+  font-size: 34px;
+  line-height: 98px;
+  color: #8ea7c8;
+}
+.input_module .rightButton{
+  position: absolute;
+  top:0px;
+  right: 0px;
+  width: 266px;
+  height: 98px;
+  border-radius: 98px;
+  line-height: 98px;
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+  background-color: #5b99ec;
+}
+.button_module{
+  height: 98px;
+  width: 622px;
+  border-radius: 98px;
+  color: #fff;
+  background-color: #5b99ec;
+  line-height: 98px;
+  text-align: center;
+  font-size: 30px;
+}
+.link_module{
+  font-size: 30px;
+  color: #8ea7c8;
+}
+.list_module{
+  width: 750px;
+  background-color: #fff;
+  border-top:1px solid #eeeeee;
+  margin-top: 
+}
+.list_module .point{
+  padding: 25px 35px;
+  background-color: #fff;
+  border-bottom:1px solid #eeeeee;
+}
+.list_module .icon{
+  float: left;
+  font-size: 30px;
+  color: #5b99ec;
+  line-height: 49px;
+}
+.list_module .name{
+  float: left;
+  font-size: 34px;
+  margin-left: 26px;
+}
+.list_module .text{
+  float: right;
+  font-size: 34px; 
+  text-align:right;
+}
+.list_module .text.long{
+  width: 477px;
+  text-align: left;
+}
+/*页面*/
+#login_page{
+   width: 750px;
+  position: absolute; 
+  top:0px;
+  left: 0px;
+  bottom: 0px;
+  overflow:hidden;
+}
+#login_page #pageFrame{
+  width: 750px;
+  position: absolute; 
+  top:486px;
+  left: 0px;
+  bottom: 0px;
+  overflow:hidden;
+}
+#login_page #pageRoll{
+  width: 200%;
+  position: absolute;
+  top:0px;
+  left: -750px;
+}
+#login_page .page{
+  width: 750px;
+  position: relative;
+  float: left;
+}
+#login_page #loginPhone,#login_page #registPhone,#regist2_page #name,#forgetKey_page #forgetPhone,#newPhone_page #newPhonePhone,#newPhone2_page #name,#history_page #Button{
+  margin: auto;
+  margin-top:106px; 
+}
+#login_page #loginKey,#login_page #loginButton,#login_page #registCode,#login_page #registKey,#login_page #registButton,#regist2_page #card,#regist2_page #registButton,#forgetKey_page #forgetCode,#forgetKey_page #resetButton,#newPhone_page #newPhoneCode,#newPhone_page #newPhoneButton,#newPhone2_page #card,#newPhone2_page #date,#newPhone2_page #Button,#userCenter_page #edit,#userCenter_page #setKey{
+  margin: auto;
+  margin-top:39px;
+}
+#login_page #forgetKey,#forgetKey_page #back,#newPhone_page #newPhoneback,#newPhone2_page #back{
+  float: right;
+  margin-right: 68px;
+  margin-top: 70px;
+}
+#forgetKey_page #new{
+  float: left;
+  margin-left: 68px;
+  margin-top: 70px;
+}
+#history_page #back{
+  margin-top: 70px;
+  text-align: center;
+}
+#history_page #history{
+  width: 750px;
+  height: 885px;
+  background-image: url(../images/history.jpg);
+  position: relative;
+}
+#history_page #ercode{
+  position: absolute;
+  top: 291px;
+  left: 223px;
+}
+#userCenter_page #userBackground{
+  width: 750px;
+  height: 395px;
+  background-image: url(../images/userBg.jpg)
+}
+#userCenter_page #userHead{
+  display: block;
+  margin: auto;
+  padding-top:70px; 
+}
+#userCenter_page #userName{
+  text-align: center;
+  margin-top:26px;
+  color: #fff;
+  font-size: 36px; 
+}

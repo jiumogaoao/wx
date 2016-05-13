@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<title>中钛新</title>
+<link rel="stylesheet" href="css/iconfont.css">
+<link href="css/main.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="all">
+  <div id="main">
+    <div id="login_page">
+        <div class="topFrame_module">
+            <div class="nav_module">
+                <div class="point">登录</div>
+                <div class="point">注册</div>
+                <div class="clear"></div>
+                <div class="line"></div>
+            </div>
+            <img class="logo" src="images/logo.png"/>
+        </div>
+        <div id="pageFrame">
+            <div id="pageRoll">
+                <div class="page wrap" id="login">
+                    <div id="scroll">
+                        <div class="input_module" id="loginPhone">
+                        <div class="icon iconfont">&#xe603;</div>
+                        <input placeholder="手机号码"/>
+                    </div>
+                    <div class="input_module" id="loginKey">
+                        <div class="icon iconfont">&#xe601;</div>
+                        <input placeholder="密码，6~12字符"/>
+                        <div class="rightIcon iconfont">&#xe606;</div>
+                    </div>
+                    <div class="button_module singleButton" id="loginButton">登录</div>
+                    <div class="clear"></div>
+                    <div class="link_module" id="forgetKey">忘记密码</div>
+                    <div class="clear"></div>
+                    </div>
+                    
+                </div>
+                <div class="page wrap" id="regist">
+                    <div id="scroll">
+                        <div class="input_module" id="registPhone">
+                        <div class="icon iconfont">&#xe603;</div>
+                        <input placeholder="手机号码"/>
+                        <div class="rightButton">获取验证码</div>
+                    </div>
+                    <div class="input_module" id="registCode">
+                        <div class="icon iconfont">&#xe600;</div>
+                        <input placeholder="验证码"/>
+                    </div>
+                    <div class="input_module" id="registKey">
+                        <div class="icon iconfont">&#xe601;</div>
+                        <input placeholder="密码，6~12字符"/>
+                        <div class="rightIcon iconfont">&#xe606;</div>
+                    </div>
+                    <div class="button_module singleButton" id="registButton">下一步</div>
+                    </div>
+                    
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="js/zepto.js"></script>
+<script src="js/event.js"></script>
+<script src="js/touch.js"></script>
+<script src="js/iscroll.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
