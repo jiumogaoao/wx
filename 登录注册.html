@@ -39,12 +39,12 @@
                         <div class="icon iconfont">&#xe603;</div>
                         <input placeholder="手机号码"/>
                     </div>
-                    <div class="input_module" id="loginKey">
+                    <div class="input_module password" id="loginKey">
                         <div class="icon iconfont">&#xe601;</div>
-                        <input placeholder="密码，6~12字符"/>
+                        <input placeholder="密码，6~12字符" type="password" />
                         <div class="rightIcon iconfont">&#xe606;</div>
                     </div>
-                    <div class="button_module singleButton" id="loginButton">登录</div>
+                    <div class="button_module singleButton disable" id="loginButton">登录</div>
                     <div class="clear"></div>
                     <div class="link_module" id="forgetKey">忘记密码</div>
                     <div class="clear"></div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="page wrap" id="regist">
                     <div id="scroll">
-                        <div class="input_module" id="registPhone">
+                        <div class="input_module getCode" id="registPhone">
                         <div class="icon iconfont">&#xe603;</div>
                         <input placeholder="手机号码"/>
                         <div class="rightButton">获取验证码</div>
@@ -62,12 +62,12 @@
                         <div class="icon iconfont">&#xe600;</div>
                         <input placeholder="验证码"/>
                     </div>
-                    <div class="input_module" id="registKey">
+                    <div class="input_module password" id="registKey">
                         <div class="icon iconfont">&#xe601;</div>
-                        <input placeholder="密码，6~12字符"/>
+                        <input placeholder="密码，6~12字符" type="password"/>
                         <div class="rightIcon iconfont">&#xe606;</div>
                     </div>
-                    <div class="button_module singleButton" id="registButton">下一步</div>
+                    <div class="button_module singleButton disable" id="registButton">下一步</div>
                     </div>
                     
                 </div>
@@ -76,6 +76,11 @@
         </div>
     </div>
     </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popButton">知道了</div>
+    </div>
+    <div id="popBg"></div>
 </div>
 <script src="js/zepto.js"></script>
 <script src="js/event.js"></script>

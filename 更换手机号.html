@@ -27,7 +27,7 @@
             <div class="title">更换手机号</div>
             <img class="logo" src="images/logo.png"/>
         </div>
-        <div class="input_module" id="newPhonePhone">
+        <div class="input_module getCode" id="newPhonePhone">
             <div class="icon iconfont">&#xe603;</div>
             <input placeholder="新手机号"/>
             <div class="rightButton">获取验证码</div>
@@ -36,7 +36,7 @@
             <div class="icon iconfont">&#xe600;</div>
                 <input placeholder="验证码"/>
         </div>
-        <div class="button_module singleButton" id="newPhoneButton">下一步</div>
+        <div class="button_module singleButton disable" id="newPhoneButton">下一步</div>
         <div class="clear"></div>
         <div class="link_module" id="newPhoneback">返回登录页</div>
         <div class="clear"></div>
@@ -44,6 +44,11 @@
         
     </div>
     </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popButton">知道了</div>
+    </div>
+    <div id="popBg"></div>
 </div>
 <script src="js/zepto.js"></script>
 <script src="js/event.js"></script>

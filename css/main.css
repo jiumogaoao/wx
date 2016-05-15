@@ -70,6 +70,47 @@ body {
   top:0px;
   left: 0px;
 }
+#popBg{
+  width: 750px;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 10;
+  display: none;
+}
+#pop{
+  width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  margin: auto;
+  position: relative;
+  top:300px;
+  z-index: 11;
+  border-radius: 10px;
+  display: none;
+}
+#popMain{
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+}
+#popButton{
+  height: 98px;
+  width: 490px;
+  border-radius: 98px;
+  color: #fff;
+  background-color: #5b99ec;
+  line-height: 98px;
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  margin-top: 40px;
+}
+.disable{
+  opacity: 0.7;
+}
 /*控件*/
 .topFrame_module{
   width: 750px;
