@@ -1,0 +1,181 @@
+<?php $this->load->view('头部.html');?>
+<div id="all">
+  <div id="main">
+	<div id="report_page" class="wrap">
+		<div id="scroll">
+		<table id="td1" cellspacing="1" cellpadding="25" align="center">
+	        <tbody>
+	        	<tr>
+	                <td colspan="3" style="color:#909293;" height="80">体检时间：<span data_name="体检时间" data_type="text" style="font-family:Arial;">&nbsp;</span></td>
+	            </tr>
+	        	<tr>
+	        		<td class="con_blue" width="30%" height="80"><div class="em icon iconfont">&#xe617;</div><div class="text">姓名</div><div class="clear"></div></td>
+	        		<td data_name="姓名" data_type="text" width="25%">&nbsp;</td>
+	        		<td rowspan="3" class="posi_re" width="55%" id="pingfen">
+						<span class="con_blue" style="font-size:6rem; font-family:Arial;"  data_name="评分" data_type="text">&nbsp;</span>
+						<span class="con_blue" style="position:absolute;">分</span>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<td class="con_blue" height="80"><div class="em icon iconfont">&#xe625;</div><div class="text">身高</div><div class="clear"></div></td>
+	        		<td><span data_name="身高" data_type="text">&nbsp;</span>cm</td>
+	        	</tr>
+	        	<tr>
+	        		<td class="con_blue" height="80"><div class="em icon iconfont">&#xe61b;</div><div class="text">体重</div><div class="clear"></div></td>
+	        		<td><span data_name="体重" data_type="text">&nbsp;</span>kg</td>
+	        	</tr>
+	        	<tr>
+	        		<td class="con_orange"><div class="em icon iconfont">&#xe629;</div><div class="text">潜在疾病</div><div class="clear"></div></td>
+	        		<td colspan="2" class="ill_sugg" data_name="潜在疾病" data_type="text">&nbsp;</td>
+	        	</tr>
+	        	<tr>
+	        		<td class="con_orange"><div class="em icon iconfont">&#xe62a;</div><div class="text">调养方案</div><div class="clear"></div></td>
+	        		<td colspan="2" class="ill_sugg" data_name="调理方案" data_type="text">&nbsp;</td>
+	        	</tr>
+	        </tbody>
+		</table>
+		<table id="td2" cellspacing="1" cellpadding="25" align="center">
+			 <thead>
+	            <tr>
+	                <th class="col" height="89" width="20%">类型</th>
+	                <th class="col danger">危险</th>
+	                <th class="col abnormal">异常</th>
+	                <th class="col normal">正常</th>   
+	                <th class="col abnormal">异常</th>   
+	                <th class="col danger">危险</th>   
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	<tr id="BMI">
+	        		<th class="col" height="95">BMI</th>        		
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span></span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="ssy">
+	        		<th class="col" height="95">收缩压</th>        		
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>mmHg</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="szy">
+	        		<th class="col" height="95">舒张压</th>
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>mmHg</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="xl">
+	        		<th class="col" height="95">心率</th>
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>次/min</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="kfxt">
+	        		<th class="col" height="95">空腹血<br/>糖</th>
+	        		<td colspan="5" class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>mmol/L</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="thxhdb" height="95">
+	        		<th class="col">糖化血<br/>红蛋白</th>
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>mmol/L</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="dmx" height="95">
+	        		<th class="col">动脉血</th>
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>ml/L</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        	<tr id="jmx">
+	        		<th class="col" height="95">静脉血</th>
+	        		<td colspan="5"  class="posi_re">
+	        			<div class="result_box">
+							<div class="result">
+								<em class="sanjiao"></em>
+								<span class="showNumber"><span class="number">&nbsp;</span>ml/L</span>
+							</div>
+						</div>
+	        		</td>
+	        	</tr>
+	        </tbody>
+		</table>
+		<table id="td3" cellspacing="1" cellpadding="25" align="center">
+			<thead>
+				<tr>
+					<th height="89" width="20%" class="col">类型</th>
+					<th class="col">左baPWV</th>
+					<th class="col">右baPWV</th>
+					<th class="col">左侧ABI</th>
+					<th class="col">右侧ABI</th>
+				</tr>
+			</thead>
+			<tbody>
+				<th height="95" class="col">具体值</th>
+				<td data_type="text" data_name="左baPWV"></td>
+				<td data_type="text" data_name="右baPWV"></td>
+				<td data_type="text" data_name="左侧ABI"></td>
+				<td data_type="text" data_name="右侧ABI"></td>
+			</tbody>
+		</table>
+		</div>
+	</div>
+	 </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="codePop">
+        <div id="popMain">
+            <img src="http://" id="codePic"/>
+            <input id="picCode" placeholder="请输入上方图片验证码" />
+            <div class="clear"></div>
+        </div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="popBg"></div>
+</div>
+<?php $this->load->view('尾部.html');?>
+<script>
+	
+</script>

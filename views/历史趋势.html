@@ -1,0 +1,57 @@
+<?php $this->load->view('头部.html');?>
+<div id="all">
+  <div id="main">
+    <div id="history_page" class="wrap">
+    <div id="scroll">
+        <div id="history">
+            <img id="ercode" src="/assets/images/ercode.png"/>
+        </div>
+        <button class="button_module singleButton" id="Button" type="button">下载APP</button>
+        <button class="link_module" id="back" type="button">返回登录页</button>
+    </div>
+    </div>
+    </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="codePop">
+        <div id="popMain">
+            <img src="http://" id="codePic"/>
+            <input id="picCode" placeholder="请输入上方图片验证码" />
+            <div class="clear"></div>
+        </div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <button id="shibie" type="button" style="display:none;position:absolute;z-index:999;top:350px;left:180px;padding:0 90px;height:80px;background:#FFFFFF;font-size:30px;">识别图中二维码</button>
+    <div id="popBg"></div>
+</div>
+
+<?php $this->load->view('尾部.html');?>
+<script type="text/javascript">
+    (function () {
+        $("#history_page #Button").unbind("tap").bind("tap",function(){
+
+            window.location.href = '/用户/软件下载';
+        });
+        $("#history #ercode").unbind("touchstart").bind("touchstart",function(){
+            window.setTimeout(function() {
+                $("#shibie").show();
+                $("#popBg").show();
+            }, 2000);
+
+        });
+        $("#shibie").unbind("tap").bind("tap",function(){
+            window.location.href = '/用户/软件下载';
+        });
+        $("#popBg").unbind("tap").bind("tap",function(){
+            $("#shibie").hide();
+            $("#popBg").hide();
+        });
+
+    })();
+</script>

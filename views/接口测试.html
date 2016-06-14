@@ -1,0 +1,76 @@
+<?php $this->load->view('头部.html');?>
+<style>
+#jkcs input,#jkcs select{
+	border:1px solid #000;
+	width:200px;}
+#jkcs .point,#jkcs #method,#jkcs #add,#jkcs #send,#jkcs #result{
+	margin-top:20px;
+	}
+#jkcs .main{
+	float:left;}
+#jkcs .remove{
+	float:left;
+	margin-left:20px;
+	}
+#jkcs #add,#jkcs #send,#jkcs .remove{
+	cursor:pointer;}
+#jkcs #add:hover,#jkcs #send:hover,#jkcs .remove:hover{
+	color:red;}
+</style>
+<div id="jkcs">
+    <div id="url">
+        url:<input/>
+    </div>
+    <div id="method">
+        method:<select>
+            <option value="POST">POST</option>
+            <option value="GET">GET</option>
+        </select>
+    </div>
+    <div id="frame">
+        <div id="add">+</div>
+    </div>
+    <div id="send">提交</div>
+    <div id="result"></div>
+</div>
+<?php $this->load->view('尾部.html');?>
+<script type="text/javascript">
+	$("#jkcs #add").unbind("click").bind("click",function(){
+		$("#add").before('<div class="point">'+
+		'<div class="main">key:<input class="key"/> value:<input class="value"/></div>'+
+		'<div class="remove">X</div>'+
+		'<div class="clear"></div>'+
+		'</div>');
+		$("#jkcs .remove").unbind("click").bind("click",function(){
+		$(this).parents(".point").remove();
+		});
+		})
+	$("#jkcs #send").unbind("click").bind("click",function(){
+		if(!$("#jkcs #url input").val()){
+			return;
+			}
+		var result={};
+
+			$("#jkcs .point").each(function(){
+			if($(this).find(".key").val().length){
+				result[$(this).find(".key").val()]=$(this).find(".value").val();
+				}
+			});
+			
+			$.ajax(
+        {
+        url:$("#jkcs #url input").val(),
+                            dataType:"text",
+                            type: $("#jkcs #method input").val(),
+                            data:{},
+                            error:function(e){
+                                alert(e);
+                                },
+                            success: function(returnData){
+								$("#jkcs #result").html(returnData)
+								}
+    }
+        );
+		})
+	
+</script>

@@ -1,0 +1,78 @@
+<?php $this->load->view('头部.html');?>
+<div id="all">
+  <div id="main">
+    <div id="login_page">
+        <div class="topFrame_module">
+            <div class="nav_module">
+                <button class="point" id="loginNav" type="button">登录</button>
+                <button class="point" id="registNav" type="button">注册</button>
+                <div class="clear"></div>
+                <div class="line"></div>
+            </div>
+            <img class="logo" src="/assets/images/logo.png"/>
+        </div>
+        <div id="pageFrame">
+            <div id="pageRoll">
+                <div class="page wrap" id="login">
+                    <div id="scroll">
+                        <div class="input_module" id="loginPhone">
+                        <div class="icon iconfont">&#xe603;</div>
+                        <input placeholder="手机号码"/>
+                    </div>
+                    <div class="input_module password" id="loginKey">
+                        <div class="icon iconfont">&#xe601;</div>
+                        <input placeholder="密码，6~12字符" type="password" />
+                        <button class="rightIcon iconfont" type="button">&#xe606;</button>
+                    </div>
+                    <button class="button_module singleButton disable" id="loginButton" type="button">登录</button>
+                    <div class="clear"></div>
+                    <button class="link_module" id="new" type="button">旧号码不用了</button>
+                    <button class="link_module" id="forgetKey" type="button">忘记密码</button>
+                    <div class="clear"></div>
+                    </div>
+                    
+                </div>
+                <div class="page wrap" id="regist">
+                    <div id="scroll">
+                        <div class="input_module getCode" id="registPhone">
+                        <div class="icon iconfont">&#xe603;</div>
+                        <input placeholder="手机号码"/>
+                        <button class="rightButton" type="button">获取验证码</button>
+                    </div>
+                    <div class="input_module" id="registCode">
+                        <div class="icon iconfont">&#xe600;</div>
+                        <input placeholder="验证码"/>
+                    </div>
+                    <div class="input_module password" id="registKey">
+                        <div class="icon iconfont">&#xe601;</div>
+                        <input placeholder="密码，6~12字符" type="password"/>
+                        <button class="rightIcon iconfont" type="button">&#xe606;</button>
+                    </div>
+                    <button class="button_module singleButton disable" id="registButton" type="button">下一步</button>
+                    </div>
+                    
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="codePop">
+        <div id="popMain">
+            <img src="http://" id="codePic"/>
+            <input id="picCode" placeholder="请输入上方图片验证码" />
+            <div class="clear"></div>
+        </div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="popBg"></div>
+</div>
+<?php $this->load->view('尾部.html');?>

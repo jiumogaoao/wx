@@ -1,0 +1,49 @@
+<?php $this->load->view('头部.html');?>
+<div id="all">
+  <div id="main">
+    <div id="newPhone_page" class="wrap">
+    <div id="scroll">
+        <div class="topFrame_module">
+            <div class="title">更换手机号</div>
+            <img class="logo" src="/assets/images/logo.png"/>
+        </div>
+        <div class="input_module getCode" id="newPhonePhone">
+            <div class="icon iconfont">&#xe603;</div>
+            <input placeholder="新手机号"/>
+            <div class="rightButton">获取验证码</div>
+        </div>
+        <div class="input_module" id="newPhoneCode">
+            <div class="icon iconfont">&#xe600;</div>
+                <input placeholder="验证码"/>
+        </div>
+        <?php if($类型){?>
+        <button class="button_module singleButton disable" id="resetnewPhoneButton" type="button">更换手机</button>
+        <?php }else{?>
+        <button class="button_module singleButton disable" id="newPhoneButton" type="button">下一步</button>
+        <?php }?>
+        <div class="clear"></div>
+        <button class="link_module" id="newPhoneback" type="button">返回登录页</button>
+        <div class="clear"></div>
+    </div>
+        
+    </div>
+    </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="codePop">
+        <div id="popMain">
+            <img src="http://" id="codePic"/>
+            <input id="picCode" placeholder="请输入上方图片验证码" />
+            <div class="clear"></div>
+        </div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="popBg"></div>
+</div>
+<?php $this->load->view('尾部.html');?>

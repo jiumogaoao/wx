@@ -1,0 +1,45 @@
+<?php $this->load->view('头部.html');?>
+<div id="all">
+  <div id="main">
+    <div id="forgetKey_page" class="wrap">
+    <div id="scroll">
+        <div class="topFrame_module">
+            <div class="title">忘记密码</div>
+            <img class="logo" src="/assets/images/logo.png"/>
+        </div>
+        <div class="input_module getCode" id="forgetPhone">
+            <div class="icon iconfont">&#xe603;</div>
+            <input placeholder="手机号码"/>
+            <button class="rightButton" id="forgetsendCode" type="button">获取验证码</button>
+        </div>
+        <div class="input_module" id="forgetCode">
+            <div class="icon iconfont">&#xe600;</div>
+                <input placeholder="验证码"/>
+        </div>
+        <button class="button_module singleButton disable" id="resetButton" type="button">下一步</button>
+        <div class="clear"></div>
+        <button class="link_module" id="back" type="button">返回登录页</button>
+        <div class="clear"></div>
+    </div>
+        
+    </div>
+    </div>
+    <div id="pop">
+        <div id="popMain"></div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="codePop">
+        <div id="popMain">
+            <img src="http://" id="codePic"/>
+            <input id="picCode" placeholder="请输入上方图片验证码" />
+            <div class="clear"></div>
+        </div>
+        <div id="popBottomFrame">
+            <button id="popButton" type="button">确定</button>
+        </div>
+    </div>
+    <div id="popBg"></div>
+</div>
+<?php $this->load->view('尾部.html');?>
