@@ -10,7 +10,7 @@
         <div class="input_module getCode" id="newPhonePhone">
             <div class="icon iconfont">&#xe603;</div>
             <input placeholder="新手机号"/>
-            <div class="rightButton">获取验证码</div>
+            <button class="rightButton">获取验证码</button>
         </div>
         <div class="input_module" id="newPhoneCode">
             <div class="icon iconfont">&#xe600;</div>
@@ -37,7 +37,9 @@
     <div id="codePop">
         <div id="popMain">
             <img src="http://" id="codePic"/>
-            <input id="picCode" placeholder="请输入上方图片验证码" />
+            <div id="picCode">
+               <input placeholder="请输入上方图片验证码"  id="picCodeInput"/> 
+            </div> 
             <div class="clear"></div>
         </div>
         <div id="popBottomFrame">

@@ -1,4 +1,10 @@
-	/*干掉默认事件*/
+	var readFn={}
+    $(document).ready(function(){
+        $.each(readFn,function(index,fn){
+            fn();
+        });
+    });
+    /*干掉默认事件*/
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     /*是否IE*/
     function isIE(){
@@ -40,12 +46,14 @@
         });
         if(navigator.userAgent.indexOf("WindowsWechat")>-1&&$(window).width()>360){
         $("html").width("200%");
+		//$("#all").css("border","2px solid #5b99ec");
+		$("#all").css("box-shadow","0px 0px 10px 5px rgba(0,0,0,0.3)");
     }
     }
     
     }
     /*先执行一次*/
-    resize();
+    readFn.rs=resize;
     /*屏幕有变动的时候再执行*/
     $(window).on("resize",resize);
     /*滚屏*/
@@ -125,6 +133,8 @@
             }
         });
 
+        },function(){
+            $(that).parents(".input_module").attr("lock","0");
         });
         
     }); 
@@ -147,8 +157,12 @@
     /*弹出*/
     /*text:弹出内容*/
     /*fn:关闭回调*/
-    tool.pop = function(text,fn){
+    tool.pop = function(text,fn,buttonName){
+        if(!buttonName){
+            buttonName="确定";
+        }
         $("#pop #popMain").html(text);
+        $("#pop #popButton").html(buttonName);
         $("#pop").show();
         $("#popBg").show();
         $("#pop #popButton").unbind("tap").bind("tap",function(){
@@ -161,19 +175,16 @@
         $("#popBg").unbind("tap").bind("tap",function(){
             $("#pop").hide();
             $("#popBg").hide();
-            if(fn){
-                fn();
-            }
         });
     };
     /*获取图片验证码*/
-    tool.picCode=function(success){
+    tool.picCode=function(success,cancel){
         var url="/用户接口/生成图形验证码";/*获取验证码*/
         $("#codePop #codePic").attr("src",url);
         $("#codePop").show();
         $("#popBg").show();
         $("#codePop #popButton").unbind("tap").bind("tap",function(){
-            var result=$("#codePop #picCode").val();
+            var result=$("#codePop #picCode input").val();
             if(!result){
                 return false;
             }
@@ -182,15 +193,18 @@
             }
             $("#codePop").hide();
             $("#popBg").hide();
-            $("#codePop #picCode").val("");
+            $("#codePop #picCode input").val("");
         });
         $("#codePop #codePic").unbind("tap").bind("tap",function(){
-            $("#codePop #codePic").attr("src",url+"?_="+new Date().getTime());
+            $("#codePop #codePic input").attr("src",url+"?_="+new Date().getTime());
         });
         $("#popBg").unbind("tap").bind("tap",function(){
+            if(cancel){
+                cancel();
+            };
             $("#codePop").hide();
             $("#popBg").hide();
-            $("#codePop #picCode").val("");
+            $("#codePop #picCode input").val("");
         });
     }
     /*验证手机格式*/
@@ -245,6 +259,15 @@
             if(cancelFn){cancelFn()}
             $("#popBottom").hide();   
         });	
+    }
+    /*loading*/
+    tool.loading = {
+        on:function(){
+            $("#loading").show();
+        },
+        off:function(){
+            $("#loading").hide();
+        }
     }
     /************登录*************/
 ;(function(){
@@ -319,7 +342,9 @@ $("#login_page #loginButton").unbind("tap").bind("tap",function(){
         }
     var phone=$("#loginPhone input").val();
     var key=$("#loginKey input").val();
+    tool.loading.on();
     $.post('/用户接口/登录检验', {"手机":phone,"密码":key}, function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href=json.数据.跳转地址;
@@ -328,6 +353,7 @@ $("#login_page #loginButton").unbind("tap").bind("tap",function(){
         }
 
     },function(){
+        tool.loading.on();
         tool.pop("网络连接失败");
     });
 });
@@ -390,7 +416,9 @@ $("#login_page #registButton").unbind("tap").bind("tap",function(){
     obj.手机号 = $("#login_page #registPhone input").val();
     obj.验证码 = $("#login_page #registCode input").val();
     obj.密码 = $("#login_page #registKey input").val();
+    tool.loading.on();
     $.post("/用户接口/注册第一步",{"数据":obj},function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href="/用户/注册第二步/";
@@ -444,7 +472,9 @@ $("#regist2_page #registButton").unbind("tap").bind("tap",function(){
     }
     var name = $("#regist2_page #name input").val();
     var idcard = $("#regist2_page #card input").val();
+    tool.loading.on();
     $.post("/用户接口/注册",{"姓名":name,"身份证":idcard},function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href=json.数据.跳转地址;
@@ -493,7 +523,9 @@ $("#forgetKey_page #resetButton").unbind("tap").bind("tap",function(){
     var obj = {}
     obj.手机号 = $("#forgetKey_page #forgetPhone input").val();
     obj.验证码 = $("#forgetKey_page #forgetCode input").val();
+    tool.loading.on();
     $.post('/用户接口/验证手机/old',{"数据":obj},function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href="/用户/更换手机号2";
@@ -546,7 +578,9 @@ $("#newPhone_page #newPhoneButton").unbind("tap").bind("tap",function(){
     var obj = {}
     obj.手机号 = $("#newPhone_page #newPhonePhone input").val();
     obj.验证码 = $("#newPhone_page #newPhoneCode input").val();
+    tool.loading.on();
     $.post('/用户接口/验证手机',{"数据":obj},function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href="/用户/更换手机号2";
@@ -564,7 +598,9 @@ $("#newPhone_page #newPhoneButton").unbind("tap").bind("tap",function(){
         var obj = {}
         obj.手机号 = $("#newPhone_page #newPhonePhone input").val();
         obj.验证码 = $("#newPhone_page #newPhoneCode input").val();
+        tool.loading.on();
         $.post('/用户接口/验证手机/login',{"数据":obj},function(json){
+            tool.loading.off();
             json = eval("("+json+")");
             if(json.状态==200){
                 window.location.href="/用户/首页";
@@ -670,7 +706,9 @@ $("#newPhone2_page #Button").unbind("tap").bind("tap",function(){
     obj.姓名 = $("#newPhone2_page #name input").val();
     obj.身份证号 = $("#newPhone2_page #card input").val();
     obj.最近体检时间 = $("#newPhone2_page #date .dateFrame").attr("value");
+    tool.loading.on();
     $.post('/用户接口/更新新手机',{"数据":obj},function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href="/用户/重置密码";
@@ -700,11 +738,13 @@ $("#history_page #back").unbind("tap").bind("tap",function(){
     if(!$("#userCenter_page").length){
         return false;
     }
+    var change=0;
     var result={};
     var sex = {};
     sex["男"]="/assets/images/head.png";
     sex["女"]="/assets/images/gHead.png";
     /*填数据*/
+    tool.loading.on();
     $.ajax(
         {
         url:"/用户接口/个人中心",
@@ -712,9 +752,11 @@ $("#history_page #back").unbind("tap").bind("tap",function(){
                             type: "POST",
                             data:{},
                             error:function(e){
+                                tool.loading.off();
                                 error(e);
                                 },
                             success: function(returnData){
+                                tool.loading.off();
                                 $("#loading").hide();
                                          result = returnData["数据"] ;
                                          var tu="/assets/images/head.png";
@@ -732,6 +774,9 @@ $("#history_page #back").unbind("tap").bind("tap",function(){
     }
         );
     /*改数据*/
+    $("#userCenter_page [data_type='input']").unbind("keydown").bind("keydown",function(){
+        change=1;
+    });
     $("#userCenter_page [data_type='input']").unbind("change").bind("change",function(){
         result[$(this).attr("data_name")]=$(this).val();
     });
@@ -744,8 +789,8 @@ $("#userCenter_page #edit").unbind("tap").bind("tap",function(){
         $("#userCenter_page .canEdit input,#userCenter_page .canEdit textarea").each(function(){
             this.removeAttribute("readonly");
         });
+        change=0;
     }else{
-
         $("#userCenter_page").attr("edit","0");
         $("#userCenter_page").removeClass("edit");
         $("#userCenter_page #edit .text").html("编辑信息");
@@ -758,8 +803,12 @@ $("#userCenter_page #edit").unbind("tap").bind("tap",function(){
         obj.住址 =  $("#userCenter_page").find("#address").val();
         obj.紧急联系人 =  $("#userCenter_page").find("#linkman").val();
         obj.紧急联系人电话  =  $("#userCenter_page").find("#linkphone").val();
-
+        if(!change){
+            return false;
+        }
+        tool.loading.on();
         $.post('/用户接口/信息更新', {"更新数据":obj}, function(json){
+            tool.loading.off();
             json = eval("("+json+")");
             if(json.状态==200){
                 tool.pop("更新成功");
@@ -789,7 +838,37 @@ $("#userCenter_page #download").unbind("tap").bind("tap",function(){
     $(this).addClass("active");
     window.location.href="/用户/历史趋势";
 });
-
+function savePic(id){
+wx.uploadImage({
+    localId: id[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+    isShowProgressTips: 1, // 默认为1，显示进度提示
+    success: function (res) {
+        var serverId = res.serverId; // 返回图片的服务器端ID
+        tool.loading.on();
+        $.post('/用户接口/头像', {"图片":serverId}, function(json){
+            tool.loading.off();
+            json = eval("("+json+")");
+            if(json.状态==200){
+                
+            }else{
+                tool.pop(json.状态说明);
+            }
+        });
+    }
+});
+}
+$("#userCenter_page #userHead").unbind("tap").bind("tap",function(){
+    wx.chooseImage({
+    count: 1, // 默认9
+    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+    success: function (res) {
+        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+        $("#userCenter_page #userHead").attr("src",localIds);
+        savePic(localIds);
+    }
+});
+})
 })();
 /************重置密码*************/
 (function(){
@@ -822,7 +901,9 @@ $("#resetKey_page #resetButton").unbind("tap").bind("tap",function(){
             return false;
         }
     var password = $("#resetKey_page #loginKey input").val();
+    tool.loading.on();
     $.post("/用户接口/设置新密码",{"密码":password},function(json){
+        tool.loading.off();
         json = eval("("+json+")");
         if(json.状态==200){
             window.location.href="/用户/登录";
@@ -830,6 +911,7 @@ $("#resetKey_page #resetButton").unbind("tap").bind("tap",function(){
             tool.pop(json.状态说明);
         }
     },function(){
+        tool.loading.off();
         tool.pop("网络连接失败");
     });
 });
@@ -843,21 +925,32 @@ $("#resetKey_page #back").unbind("tap").bind("tap",function(){
     if(!$("#report_page").length){
         return false;
     }
-    var code=0;
+    var shareCode = $("#shareCode").val();
+    if(shareCode){
+
+        var code = shareCode;
+        var share = 'shareCode';
+    }else{
+        var code = 0;
+        var share = '';
+    }
     var getting=false;
     function getData(){
         /*填数据*/
+        tool.loading.on();
     $.ajax(
         {
-        url:"/用户接口/体检报告/"+code,
+        url:"/用户接口/体检报告/"+code+'/'+share,
                             dataType:"json",
                             type: "POST",
                             cache:false,
                             data:{},
                             error:function(e){
+                                tool.loading.off();
                                 error(e);
                                 },
                             success: function(returnData){
+                                tool.loading.off();
                                         getting=false;
                                         if(!returnData["状态"]){
                                             tool.pop("网络连接有误");
@@ -868,7 +961,9 @@ $("#resetKey_page #back").unbind("tap").bind("tap",function(){
                                             $("#report_page .result").removeClass("bar_abnormal_max");
                                             $("#report_page .result").removeClass("bar_normal");
                                             var result = returnData["数据"] ;
-                                           code = result["体检记录编号"];
+                                            if(!shareCode){
+                                                code = result["体检记录编号"];
+                                            }
                                          $.each(result,function(index,point){
                                             $("#report_page [data_type='text'][data_name='"+index+"']").html(point);
                                          });
@@ -878,17 +973,17 @@ $("#resetKey_page #back").unbind("tap").bind("tap",function(){
                                          $("#report_page #ssy .number").html(main["收缩压"]);
                                          $("#report_page #szy .number").html(main["舒张压"]);
                                          $("#report_page #kfxt .number").html(main["空腹血糖"]);
-                                         $("#report_page #thxhdb .number").html(main["糖化血红蛋白"]);
-                                         $("#report_page #dmx .number").html(main["动脉血"]);
-                                         $("#report_page #jmx .number").html(main["静脉血"]);
+                                         //$("#report_page #thxhdb .number").html(main["糖化血红蛋白"]);
+                                         //$("#report_page #dmx .number").html(main["动脉血"]);
+                                         $("#report_page #jmx .number").html(main["静脉血氧"]);
                                          $("#report_page #BMI .result").addClass(text2class[main["BMI状态"]]);
                                          $("#report_page #xl .result").addClass(text2class[main["心率状态"]]);
                                          $("#report_page #ssy .result").addClass(text2class[main["收缩压状态"]]);
                                          $("#report_page #szy .result").addClass(text2class[main["舒张压状态"]]);
                                          $("#report_page #kfxt .result").addClass(text2class[main["空腹血糖状态"]]);
-                                         $("#report_page #thxhdb .result").addClass(text2class[main["糖化血红蛋白状态"]]);
-                                         $("#report_page #dmx .result").addClass(text2class[main["动脉血状态"]]);
-                                         $("#report_page #jmx .result").addClass(text2class[main["静脉血状态"]]);
+                                         //$("#report_page #thxhdb .result").addClass(text2class[main["糖化血红蛋白状态"]]);
+                                         //$("#report_page #dmx .result").addClass(text2class[main["动脉血状态"]]);
+                                         $("#report_page #jmx .result").addClass(text2class[main["静脉血氧状态"]]);
                                          $.each(main,function(index,point){
                                             $("#report_page [data_type='text'][data_name='"+index+"']").html(point);
                                          })
@@ -901,8 +996,9 @@ $("#resetKey_page #back").unbind("tap").bind("tap",function(){
     }
     scrollArray[0].on('scroll', function(){
         if(this.y.toFixed(0)>100&&!getting){
-            getting=true;
-            getData();
+            //getting=true;
+            //getData();
+            window.location.reload();
         }
     });
     $("#loading").hide();
@@ -913,6 +1009,11 @@ $("#resetKey_page #back").unbind("tap").bind("tap",function(){
     text2class["异常-高"]="bar_abnormal_max";
     text2class["正常"]="bar_normal";
     getData();
+    $("#goecg").unbind("tap").bind("tap",function(){
+        tool.pop("心电图数据是app的特有功能，快去下载吧 O(∩_∩)O",function(){
+            window.open("/用户/软件下载");
+        },"下载app");
+    })
     })();
 /************分享信息*************/
 (function(){
@@ -923,10 +1024,40 @@ $("#resetKey_page #back").unbind("tap").bind("tap",function(){
         window.location.href = '/用户/软件下载';
     });
     $("#loading").hide();
-    $(document).ready(function(){
+    readFn.anDelay=function(){
        var aDelay=setTimeout(function(){
         $("#share_page").addClass("run");
-    },2000); 
-    });
+    },1000); 
+    };
     
 })();
+/****兼容****/
+var brower = {
+    versions:function(){
+      var u = window.navigator.userAgent;
+      var num ;
+      if(u.indexOf('Mobile') > -1){
+        //移动端
+        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1){
+          //android
+          num = u.substr(u.indexOf('Android') + 8, 3);
+          return {"type":"Android", "version": num};
+        }else{
+          return false;
+        }
+      }else{return false};
+    }
+  }
+
+if(brower.versions()&&brower.versions().version){
+  var v=brower.versions().version.split(".");
+  if(Number(v[0])<=4&&Number(v[1])<4){
+        $("body").append('<style>'+
+'#codePop #picCode input{ '+
+'padding:40px;'+
+'font-size: 40px;'+
+'line-height: 40px;'+
+'} '+
+    '</style>')
+  }
+}

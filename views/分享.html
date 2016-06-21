@@ -1,7 +1,7 @@
 <script type="text/javascript">
     var shareTitle="中钛新健康小屋";
     var shareDsc="中钛新健康小屋";
-    var shareUrl='/用户/分享信息';
+    var shareUrl='<?=$shareUrl;?>';
     var sharePic="/assets/images/shareLogo.jpg";
     wx.config({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -9,7 +9,7 @@
         timestamp:'<?php echo $signPackage["timestamp"];?>' , // 必填，生成签名的时间戳
         nonceStr: '<?php echo $signPackage["nonceStr"];?>', // 必填，生成签名的随机串
         signature: '<?php echo $signPackage["signature"];?>',// 必填，签名，见附录1
-        jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","onMenuShareQZone"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","onMenuShareQZone","chooseImage","uploadImage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
     wx.ready(function(){
         console.log("ready")

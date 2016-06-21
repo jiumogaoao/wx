@@ -11,11 +11,21 @@
   -webkit-appearance: none; }
 button{
   display: block;
-  font-family: "Microsoft YaHei","HanHei SC","Arial"
+  font-family: "Microsoft YaHei","HanHei SC","Arial";
+  cursor:pointer;
+  outline:none;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+button:hover{
+  opacity: 0.5;
 }
 input,textarea{
-  font-family:"Microsoft YaHei","HanHei SC","Arial"
+  font-family:"Microsoft YaHei","HanHei SC","Arial";
+  outline:none;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
 }
+::-moz-focus-inner{border:0px;
+-webkit-tap-highlight-color:rgba(255,0,0,0);}
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
 color: #8ea7c8; 
 font-family:"Microsoft YaHei";
@@ -37,7 +47,7 @@ font-family:"Microsoft YaHei";
 font-size:25px;
 } 
 img{
-	display:block;}
+  display:block;}
 html {
   width: 750px;
   height: 100%;
@@ -59,25 +69,36 @@ body {
   box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
 }
 #all{
-	 width: 750px;
+   width: 750px;
    margin:auto;
   height:100%;
   position: relative; 
   overflow:hidden;
-	}
+  }
 #main{
-	 width: 750px;
+   width: 750px;
   position: absolute; 
   top:0px;
   left: 0px;
   bottom: 0px;
   overflow:hidden;
-	}
+  }
 .wrap{
-  position:relative;
-  height: 100%;
+  width: 750px;
+position: absolute;
+top: 0px;
+left: 0px;
+bottom: 0px;
+overflow:hidden;
 }
-.wrap #scroll{
+#share_page{
+	  width: 750px;
+position: absolute;
+top: 0px;
+left: 0px;
+bottom: 0px;
+	}
+.wrap #scroll,#share_page #scroll{
   width: 100%;
   position: absolute;
   top:0px;
@@ -94,7 +115,7 @@ body {
   z-index: 10;
   display: none;
 }
-#pop,#codePop{
+#pop,#codePop,#downPop{
   width: 572px;
   padding: 20px;
   background-color: #fff;
@@ -120,6 +141,17 @@ body {
   text-align: center;
   border:1px solid #8ea7c8;
   font-size: 55px;
+  position: relative;
+}
+#codePop #picCode input{
+  width: 366px;
+    height: 98px;
+    line-height: 98px;
+    text-align: center;
+    font-size: 55px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 #popMain{
   width: 542px;
@@ -149,6 +181,8 @@ body {
   font-size: 30px;
   margin: auto;
 }
+#codePop #popButton:hover{
+	opacity:1;}
 #popBottom{
   position: absolute;
   width:100%;
@@ -162,7 +196,7 @@ body {
   width: 100%;
   height: 84px;
   background-color: #fff;
-	}
+  }
 #popBottomFinish,#popBottomCancel{
   float:right;
   margin-right:20px;
@@ -171,17 +205,18 @@ body {
   font-size: 30px;
 }
 #popBottomCancel{
-	float:left;
-	margin-left:20px;}
+  float:left;
+  margin-left:20px;}
 #loading{
   width: 750px;
-  height:100%;
-  position:absolute;
+  position: absolute; 
   top:0px;
-  left: 0px; 
+  left: 0px;
+  bottom: 0px;
   overflow:hidden;
   z-index: 20;
-  background-color:#efefef; 
+  background-color:#efefef;
+  background-color: rgba(0,0,0,0.3); 
   text-align: center;
 }
 #loading .icon{
@@ -199,6 +234,44 @@ body {
   color: #a5a3a3;
   margin-top: 40px;
 }
+
+@keyframes loadingAn
+{
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+
+@-moz-keyframes loadingAn /* Firefox */
+{
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+
+@-webkit-keyframes loadingAn /* Safari 和 Chrome */
+{
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+
+@-o-keyframes loadingAn /* Opera */
+{
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+
+#loading .an{
+  font-size: 170px;
+    color: #fff;
+    position: absolute;
+    top: 445px;
+    left: 240px;
+ animation:loadingAn 2s infinite linear ;
+ -webkit-animation:loadingAn 2s infinite linear ;
+ -moz-animation:loadingAn 2s infinite linear ;
+ -o-animation:loadingAn 2s infinite linear ;
+}
+
+
 .disable{
   opacity: 0.7;
 }
@@ -296,8 +369,8 @@ body {
   background-color: #5b99ec;
 }
 .input_module .rightButton.disable{
-	background-color:#acadaf;
-	}
+  background-color:#acadaf;
+  }
 .button_module{
   height: 98px;
   width: 622px;
@@ -495,6 +568,10 @@ body {
   border-radius: 110px;
   z-index: 3;
 }
+#report_page #tableFrame{
+  height: 1640px;
+overflow: hidden;
+}
 #report_page table{
   width: 676px;
   margin: auto;
@@ -598,6 +675,9 @@ border-bottom: 12px solid #fdc49d;
 #report_page #errFrame{
   text-align: left;
 }
+#report_page #td3 th,#report_page #td3 td{
+  font-size: 25px;
+}
 /*分享信息*/
 #shareBg{
     width: 750px;
@@ -634,7 +714,7 @@ border-bottom: 12px solid #fdc49d;
 }
 #share_page #space{
   width: 750px;
-  height: 110px;
+  height: 50px;
 }
 #share_page #logo{
   width: 142px;
@@ -656,6 +736,7 @@ border-bottom: 12px solid #fdc49d;
 #share_page #head{
   width: 166px;
   height: 166px;
+  display: block;
   margin:auto;
   border-radius: 166px;
 }
@@ -694,4 +775,14 @@ border-bottom: 12px solid #fdc49d;
   margin: auto;
   border-radius: 100px;
   margin-top: 89px;
+}
+#userCenter_page{width: 750px;
+    position: relative;
+    height: 100%;
+    float: left;}
+#goecg{
+  display: block;
+  position: absolute;
+  bottom:270px;
+  right: 37px;
 }

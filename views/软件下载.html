@@ -8,11 +8,60 @@
     <title>中钛新</title>
     <link rel="stylesheet" href="/assets/css/iconfont.css">
     <link href="/assets/css/main.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
-    <link href="/assets/css/phoneSelect.css" rel="stylesheet" rev="stylesheet" type="text/css"/>
+    <style>
+        @media screen and (max-width: 500px){
+            #msg ,#shareTop{width:90%;}
+            #msg_title{font-size: 2.5em;}
+            #msg_content{font-size: 1.4em;}
+            #msg_content p strong{font-size: 1.7em;}
+        }
+        @media only screen and (min-width: 501px) and (max-width: 900px){
+            #msg ,#shareTop{width:60%;max-width: 600px;}
+            #msg_title{font-size: 2.5em;}
+            #msg_content{font-size: 1.4em;}
+            #msg_content p strong{font-size: 1.7em;}
+
+        }
+        @media only screen and (min-width: 901px){
+            #msg ,#shareTop{width:40%;max-width: 600px;}
+            #msg_title{font-size: 20px;}
+            #msg_content{font-size: 12px;}
+            #msg_content p strong{font-size: 15px;}
+        }
+        #prompt{position: absolute;display: none;width:100%;}
+        #shareTop{position:relative;z-index: 999;margin: auto;margin-top:0;padding:0;}
+        #shareTop img{width:100%;}
+        #msg{ position:relative;background-color: #fff;margin: auto;margin-top:-2px;padding:10px 0;z-index: 999;border-bottom-right-radius:15px;border-bottom-left-radius:15px;}
+        #msg_title ,#msg_content{padding:15px;text-align: center;margin:0 10px;}
+        #msg_title{border-bottom: 1px solid #b5b5b5;}
+        #msg_content p{text-align: left !important;margin-top:10px;}
+        #msg_content p strong{color: #0b4b95;}
+        .runing
+        {  animation:mymove 2s infinite;  animation-timing-function:ease;animation-iteration-count:1;
+            -webkit-animation:mymove 2s infinite;  -webkit-animation-timing-function:ease;-webkit-animation-iteration-count:1;/* Safari and Chrome */
+        }
+        @keyframes mymove
+        {
+            from {top:100%;}
+            to {top:0%;}
+        }
+        @-webkit-keyframes mymove /* Safari and Chrome */
+        {
+            from {top:100%;}
+            to {top:0%;}
+        }
+    </style>
 </head>
 <body>
 <div id="all">
-    <h3></h3>
+    <div id="prompt">
+        <div id="shareTop"><img src="/assets/images/share1.png" /></div>
+        <div id="msg">
+            <div id="msg_title">温馨提示</div>
+            <div id="msg_content"></div>
+        </div>
+    </div>
+    <div id="popBg"></div>
 </div>
 <?php $this->load->view('尾部.html');?>
 <script type="text/javascript">
@@ -39,14 +88,22 @@
         //console.log(browser.versions);
         if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
 
-            //$("h3").html("iso版本正在努力建设中，敬请期待");
-           window.location.href = "http://mp.weixin.qq.com/mp/redirect?url=http://appsto.re/cn/yv-Scb.i";
+            $("#popBg").show();
+            $("#msg_content").html("<p>如果不能直接跳转，请：</p><p><strong>【点击右上角】</strong></p><p><strong>“在浏览器中打开”</strong></p><p>即可进入下载页面噢</p>");
+            $("#prompt").show().addClass("runing");
+            window.location.href = "https://appsto.re/cn/yv-Scb.i";
+
         }
         else if (browser.versions.android) {
 
-            window.location.href = "http://beta.qq.com/m/7gjk";
+            window.location.href = "http://app.qq.com/#id=detail&appid=1105308125";
+            //手机：http://app.qq.com/#id=detail&appid=1105308125
+            //PC  : http://android.myapp.com/myapp/detail.htm?apkName=com.zoteri.bighealth
+
         }else{
-            $("h3").html("请用移动设备访问下载");
+            $("#popBg").show();
+            $("#msg_content").html("<p>检测到你正在PC上访问，请选择：</p><p><a href='http://android.myapp.com/myapp/detail.htm?apkName=com.zoteri.bighealth'>下载安卓版本</a></p><p><a href='https://appsto.re/cn/yv-Scb.i'>下载ios版本</a></p>");
+            $("#prompt").show().addClass("runing");
         }
     })();
 </script>
